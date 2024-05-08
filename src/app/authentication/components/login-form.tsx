@@ -39,7 +39,7 @@ export const LoginForm = () => {
                 {...register('password', { 
                     required: true,
                     minLength: 8,
-                    // pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/
+                    pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/
                 })}
             />
             <div>

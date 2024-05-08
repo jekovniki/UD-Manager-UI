@@ -4,6 +4,9 @@
   @tailwind utilities;
 
   @layer base {
+    a {
+      color: var(--link);
+    }
     .bg-main {
       background: var(--gradient-main);
     }
@@ -14,6 +17,8 @@
       --gradient-main: linear-gradient(259.31deg, #0A6DC8 0%, #2038B6 96.68%);
       --background: 0 0% 100%;
       --foreground: 0 0% 3.9%;
+
+      --link: rgb(10, 109, 200);
 
       --card: 0 0% 100%;
       --card-foreground: 0 0% 3.9%;
