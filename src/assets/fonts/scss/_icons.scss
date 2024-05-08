@@ -1,0 +1,103 @@
+// Icons
+// -------------------------
+
+.ud-image:before,
+.ud-company:before,
+.ud-autograph:before,
+.ud-at-sign:before,
+.ud-trash-can:before,
+.ud-password:before,
+.ud-home:before,
+.ud-wallet:before,
+.ud-users:before,
+.ud-coins:before,
+.ud-add-list:before,
+.ud-male-user:before,
+.ud-info:before,
+.ud-pie-chart:before,
+.ud-back:before,
+.ud-plus:before,
+.ud-edit:before,
+.ud-user-shield:before,
+.ud-text:before,
+.ud-get-cash:before,
+.ud-import:before,
+.ud-price-tag:before,
+.ud-cheque:before,
+[data-icons8]:before {
+  @include icons8-font;
+}
+
+[data-icons8]:before {
+  content: attr(data-icons8);
+}
+
+.ud-image:before {
+  content: $icons8-var-image;
+}
+.ud-company:before {
+  content: $icons8-var-company;
+}
+.ud-autograph:before {
+  content: $icons8-var-autograph;
+}
+.ud-at-sign:before {
+  content: $icons8-var-at-sign;
+}
+.ud-trash-can:before {
+  content: $icons8-var-trash-can;
+}
+.ud-password:before {
+  content: $icons8-var-password;
+}
+.ud-home:before {
+  content: $icons8-var-home;
+}
+.ud-wallet:before {
+  content: $icons8-var-wallet;
+}
+.ud-users:before {
+  content: $icons8-var-users;
+}
+.ud-coins:before {
+  content: $icons8-var-coins;
+}
+.ud-add-list:before {
+  content: $icons8-var-add-list;
+}
+.ud-male-user:before {
+  content: $icons8-var-male-user;
+}
+.ud-info:before {
+  content: $icons8-var-info;
+}
+.ud-pie-chart:before {
+  content: $icons8-var-pie-chart;
+}
+.ud-back:before {
+  content: $icons8-var-back;
+}
+.ud-plus:before {
+  content: $icons8-var-plus;
+}
+.ud-edit:before {
+  content: $icons8-var-edit;
+}
+.ud-user-shield:before {
+  content: $icons8-var-user-shield;
+}
+.ud-text:before {
+  content: $icons8-var-text;
+}
+.ud-get-cash:before {
+  content: $icons8-var-get-cash;
+}
+.ud-import:before {
+  content: $icons8-var-import;
+}
+.ud-price-tag:before {
+  content: $icons8-var-price-tag;
+}
+.ud-cheque:before {
+  content: $icons8-var-cheque;
+}

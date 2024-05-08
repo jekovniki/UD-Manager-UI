@@ -18,7 +18,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        main: "linear-gradient(259.31deg, rgb(var(--main-one)) 0%, rgb(var(--main-two)) 96.68%)",
+        main: "var(--gradient-main)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

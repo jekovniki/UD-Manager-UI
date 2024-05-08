@@ -1,11 +1,17 @@
+@import url('./assets/fonts/css/styles.min.css');
 @tailwind base;
   @tailwind components;
   @tailwind utilities;
 
   @layer base {
+    .bg-main {
+      background: var(--gradient-main);
+    }
+    .default-height {
+      height: 60px;
+    }
     :root {
-      --main-one: 10, 109, 200;
-      --main-two: 32 56 182;
+      --gradient-main: linear-gradient(259.31deg, #0A6DC8 0%, #2038B6 96.68%);
       --background: 0 0% 100%;
       --foreground: 0 0% 3.9%;
 
