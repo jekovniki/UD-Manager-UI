@@ -35,15 +35,21 @@ export const LoginForm = () => {
                 type="password"
                 autoComplete="current-password"
                 placeholder="Въведете парола"
-                required
                 {...register('password', { 
                     required: true,
-                    minLength: 8,
-                    pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/
+                    minLength: {
+                        value: 8,
+                        message: "Паролата трябва да съдържа поне 8 символа"
+                    },
+                    pattern: {
+                        value: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/,
+                        message: "Паролата трябва да съдържа поне едna главна буква, една малка буква, едно число и един специален символ"
+                    }
+                    
                 })}
             />
             <div>
-                { errors?.password && <p className="text-red-500 text-xs italic">Паролата трябва да съдържа поне 8 символа, от които - един да е главна буква, един да е малка буква, едно число и един специален символ</p> }
+                { errors?.password?.message && <p className="text-red-500 text-xs italic">{ errors?.password?.message as string }</p> }
             </div>
             <div>
                 <Button type="submit" className="w-full" variant="default">Вход</Button>

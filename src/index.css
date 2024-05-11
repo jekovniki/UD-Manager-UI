@@ -10,6 +10,7 @@
     .bg-main {
       background: var(--gradient-main);
     }
+    
     .default-height {
       height: 60px;
     }

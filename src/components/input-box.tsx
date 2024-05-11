@@ -24,6 +24,8 @@ export const InputBox = React.forwardRef<HTMLInputElement, DefaultInput>(
                         placeholder={placeholder}
                         required={required}
                         className="block w-full rounded border-0 p-0 h-auto leading-none text-gray-900 placeholder-gray-400 text-base focus-visible:border-0"
+                        {...props}
+                        ref={ref}
                     />
                 </div>
             </div>
