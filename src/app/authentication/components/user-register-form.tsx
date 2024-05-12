@@ -95,7 +95,7 @@ export const UserRegisterForm = () => {
                 </div>
             </div>
             <div className="w-full px-8 pt-6 pb-4 text-right border border-slate-200 border-t-1 border-b-0 border-l-0 border-r-0" >
-                <Button type="submit" className="px-14 py-none h-[50px] text-sm" variant="default">Вход</Button>
+                <Button type="submit" className="px-14 py-none h-[50px] text-sm" variant="default">Регистрация</Button>
             </div>
         </form>
     )
