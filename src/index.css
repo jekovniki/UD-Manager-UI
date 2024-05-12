@@ -31,7 +31,7 @@
       --primary: 209, 91%, 41%, 1;
       --primary-foreground: 0 0% 98%;
 
-      --secondary: 0 0% 96.1%;
+      --secondary: 228 45% 96%;
       --secondary-foreground: 0 0% 9%;
 
       --muted: 0 0% 96.1%;
@@ -44,6 +44,7 @@
       --destructive-foreground: 0 0% 98%;
 
       --border: 0 0% 89.8%;
+      --border-secondary: 208 9% 61%;
       --input: 0 0% 89.8%;
       /* --label: 209 63% 13% 0.45; */
       --ring: 0 0% 3.9%;

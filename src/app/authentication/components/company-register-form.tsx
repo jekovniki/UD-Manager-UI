@@ -1,8 +1,8 @@
 import { InputBox } from "@/components/input-box";
 import { Button } from "@/components/ui/button";
+import { UploadImage } from "@/components/upload-image";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Input } from "@/components/ui/input";
 
 export const CompanyRegisterForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -17,7 +17,9 @@ export const CompanyRegisterForm = () => {
     return (
         <form className="space-y-3 w-full" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-row items-center mb-6">
-                <Input id="picture" type="file" className="basis-1/6 min-w-[11rem] p-2 mr-4 h-[148px]" />
+                <div className="basis-1/6 min-w-[11rem] mr-4 h-[148px]">
+                    <UploadImage handleFile={() => {}} />
+                </div>
                 <div className="basis-5/6">
                     <div className="mb-4">
                         <InputBox

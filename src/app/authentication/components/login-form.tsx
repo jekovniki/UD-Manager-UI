@@ -1,31 +1,22 @@
-"use client";
-
 import { InputBox } from "@/components/input-box";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
-import { useToast } from "@/components/ui/use-toast";
 import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
-    const { toast } = useToast();
 
     const onSubmit = (data: any) => {
         console.log(data);
-        toast({
-            title: "Successfully signed in!",
-            description: "You have signed in successfully. Redirecting to homepage."
-        })
-
         setTimeout(() => {
-            navigate("/");
-        }, 1000);
+            navigate("/")
+        }, 5000);
     }
 
     return (
         <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
-            <InputBox 
+            <InputBox
                 id="email"
                 type="email"
                 iconClass="ud-at-sign"
@@ -33,11 +24,11 @@ export const LoginForm = () => {
                 autoComplete="email"
                 placeholder="Вашият имейл адрес"
                 required
-                {...register('email', { 
+                {...register('email', {
                     required: true
                 })}
             />
-            <InputBox 
+            <InputBox
                 id="password"
                 iconClass="ud-password"
                 label="Парола"
@@ -45,7 +36,7 @@ export const LoginForm = () => {
                 autoComplete="current-password"
                 placeholder="Въведете парола"
                 required
-                {...register('password', { 
+                {...register('password', {
                     required: true,
                     minLength: {
                         value: 8,
@@ -55,11 +46,11 @@ export const LoginForm = () => {
                         value: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/,
                         message: "Паролата трябва да съдържа поне едna главна буква, една малка буква, едно число и един специален символ"
                     }
-                    
+
                 })}
             />
             <div>
-                { errors?.password?.message && <p className="text-red-500 text-xs italic">{ errors?.password?.message as string }</p> }
+                {errors?.password?.message && <p className="text-red-500 text-xs italic">{errors?.password?.message as string}</p>}
             </div>
             <div>
                 <Button type="submit" className="w-full" variant="default">Вход</Button>
