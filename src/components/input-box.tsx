@@ -17,7 +17,7 @@ export const InputBox = React.forwardRef<HTMLInputElement, DefaultInput>(
                     {iconClass ? <i className={`${iconClass} text-2xl`} style={{lineHeight: '1.25rem'}}></i> : ""}
                 </div>
                 <div className="w-10/12">
-                    <label className="text-gray-700 text-sm font-normal leading-none mt-1">{label}</label>
+                    <label className="text-gray-700 text-sm font-normal leading-none mt-1">{label} { required ? <span className="text-red-500">*</span> : ""}</label>
                     <Input
                         id={id}
                         type={type}

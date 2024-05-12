@@ -1,7 +1,8 @@
 import { TPublicRoutes } from "@/types/base";
 import Homepage from "./homepage";
 import Login from "./login";
-import CompanyRegister from "./register";
+import CompanyRegister from "./company-register";
+import UserRegister from "./user-register";
 
 const publicRoutes: TPublicRoutes[] = [{
     name: 'Homepage',
@@ -23,6 +24,13 @@ const publicRoutes: TPublicRoutes[] = [{
     route: '/register',
     icon: null,
     component: CompanyRegister(),
+    sideNav: false
+}, {
+    name: 'Register user',
+    key: 'register-user',
+    route: '/register/user',
+    icon: null,
+    component: UserRegister(),
     sideNav: false
 }];
 

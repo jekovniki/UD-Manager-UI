@@ -44,6 +44,7 @@ export const LoginForm = () => {
                 type="password"
                 autoComplete="current-password"
                 placeholder="Въведете парола"
+                required
                 {...register('password', { 
                     required: true,
                     minLength: {
