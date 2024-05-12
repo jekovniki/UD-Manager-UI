@@ -1,7 +1,7 @@
 import { TPublicRoutes } from "@/types/base";
 import Homepage from "./homepage";
 import Login from "./login";
-import Register from "./register";
+import CompanyRegister from "./register";
 
 const publicRoutes: TPublicRoutes[] = [{
     name: 'Homepage',
@@ -22,8 +22,8 @@ const publicRoutes: TPublicRoutes[] = [{
     key: 'register',
     route: '/register',
     icon: null,
-    component: Register(),
+    component: CompanyRegister(),
     sideNav: false
-}]
+}];
 
 export const routes = [...publicRoutes];

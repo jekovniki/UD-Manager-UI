@@ -1,17 +1,26 @@
+"use client";
+
 import { InputBox } from "@/components/input-box";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
+import { useToast } from "@/components/ui/use-toast";
 import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
-    console.log(errors);
-    // TODO: utulise handleSubmit from useForm, when the api is ready
-    // doc: https://react-hook-form.com/docs/useform/handlesubmit
-    const onSubmit = async (data: any) => {
+    const { toast } = useToast();
+
+    const onSubmit = (data: any) => {
         console.log(data);
-        navigate("/");
+        toast({
+            title: "Successfully signed in!",
+            description: "You have signed in successfully. Redirecting to homepage."
+        })
+
+        setTimeout(() => {
+            navigate("/");
+        }, 1000);
     }
 
     return (

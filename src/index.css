@@ -7,8 +7,14 @@
     a {
       color: var(--link);
     }
+    /* I gave up trying to put this in the talwind.css file. After about an hour or two wondering how to put the gradient
+    color there, I gave up, so this is my shame (self note: retry when you're not bored) : */
     .bg-main {
       background: var(--gradient-main);
+    }
+
+    .label-color {
+      color: var(--label);
     }
     
     .default-height {
@@ -16,6 +22,7 @@
     }
     :root {
       --gradient-main: linear-gradient(259.31deg, #0A6DC8 0%, #2038B6 96.68%);
+      --label: rgba(12, 33, 52, 0.45);
       --background: 0 0% 100%;
       --foreground: 0 0% 3.9%;
 
@@ -44,6 +51,7 @@
 
       --border: 0 0% 89.8%;
       --input: 0 0% 89.8%;
+      /* --label: 209 63% 13% 0.45; */
       --ring: 0 0% 3.9%;
 
       --radius: 0.5rem;

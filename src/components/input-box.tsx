@@ -5,14 +5,15 @@ import { Input } from "@/components/ui/input";
 export interface DefaultInput
     extends InputProps {
     iconClass: string,
-    label: string
+    label: string,
+    wrapperClassName?: string
 }
 
 export const InputBox = React.forwardRef<HTMLInputElement, DefaultInput>(
-    ({ id, className, autoComplete, type, label = "", iconClass = "", placeholder = "", required = false, ...props }, ref) => {
+    ({ id, className, autoComplete, wrapperClassName = "", type, label = "", iconClass = "", placeholder = "", required = false, ...props }, ref) => {
         return (
-            <div className="flex items-center border border-indigo-100 rounded w-100 p-2">
-                <div className="w-2/12 flex items-center justify-around">
+            <div className={"flex items-center border border-indigo-100 rounded w-100 p-2 " + wrapperClassName}>
+                <div className="w-2/12 max-w-[54px] flex items-center justify-around">
                     {iconClass ? <i className={`${iconClass} text-2xl`} style={{lineHeight: '1.25rem'}}></i> : ""}
                 </div>
                 <div className="w-10/12">
