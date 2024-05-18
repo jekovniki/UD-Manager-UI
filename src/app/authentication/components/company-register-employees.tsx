@@ -18,15 +18,14 @@ export const CompanyRegisterEmployees = ({ employees, setEmployees }: { employee
     const [email, setEmail] = useState('');
     const [role, setRole] = useState('');
 
+    const isValidEmail = email && email.includes('@');
+
     const addEmployee = () => {
         setEmployees([...employees, { email, role }]);
         setRole('');
         setEmail('')
     }
     const removeEmployee = (email: string) => {
-        if (!employees?.email)  {
-            return;
-        }
         setEmployees(employees.filter((employee: RegisterEmployee) => employee.email !== email))
     }
 
@@ -73,6 +72,7 @@ export const CompanyRegisterEmployees = ({ employees, setEmployees }: { employee
                     variant='default'
                     className="h-[40px] w-[120px] text-sm"
                     onClick={addEmployee}
+                    disabled={!isValidEmail || !role}
                     style={{ fontWeight: '300' }}>
                     Добави
                 </Button>
