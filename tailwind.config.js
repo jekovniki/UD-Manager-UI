@@ -20,7 +20,9 @@ module.exports = {
       colors: {
         main: "var(--gradient-main)",
         border: "hsl(var(--border))",
+        borderSecondary: "hsl(var(--border-secondary))",
         input: "hsl(var(--input))",
+        label: "hsl(var(--label))",
         link: "hsl(var(--link))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",

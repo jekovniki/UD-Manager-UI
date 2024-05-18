@@ -6,17 +6,17 @@ import { useNavigate } from "react-router-dom";
 export const LoginForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
-    console.log(errors);
-    // TODO: utulise handleSubmit from useForm, when the api is ready
-    // doc: https://react-hook-form.com/docs/useform/handlesubmit
-    const onSubmit = async (data: any) => {
+
+    const onSubmit = (data: any) => {
         console.log(data);
-        navigate("/");
+        setTimeout(() => {
+            navigate("/")
+        }, 5000);
     }
 
     return (
         <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
-            <InputBox 
+            <InputBox
                 id="email"
                 type="email"
                 iconClass="ud-at-sign"
@@ -24,18 +24,19 @@ export const LoginForm = () => {
                 autoComplete="email"
                 placeholder="Вашият имейл адрес"
                 required
-                {...register('email', { 
+                {...register('email', {
                     required: true
                 })}
             />
-            <InputBox 
+            <InputBox
                 id="password"
                 iconClass="ud-password"
                 label="Парола"
                 type="password"
                 autoComplete="current-password"
                 placeholder="Въведете парола"
-                {...register('password', { 
+                required
+                {...register('password', {
                     required: true,
                     minLength: {
                         value: 8,
@@ -45,11 +46,11 @@ export const LoginForm = () => {
                         value: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/,
                         message: "Паролата трябва да съдържа поне едna главна буква, една малка буква, едно число и един специален символ"
                     }
-                    
+
                 })}
             />
             <div>
-                { errors?.password?.message && <p className="text-red-500 text-xs italic">{ errors?.password?.message as string }</p> }
+                {errors?.password?.message && <p className="text-red-500 text-xs italic">{errors?.password?.message as string}</p>}
             </div>
             <div>
                 <Button type="submit" className="w-full" variant="default">Вход</Button>
