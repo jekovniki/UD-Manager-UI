@@ -1,4 +1,5 @@
-export interface SelectOptions {
-    key: string | number,
-    value: string | number | boolean
+export interface DropdownOptions {
+    key: string,
+    value: string,
+    label: string
 }

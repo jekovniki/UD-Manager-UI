@@ -5,27 +5,46 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { SelectOptions } from "@/interfaces/base";
+import { DropdownOptions } from "@/interfaces/base";
+import { InputProps } from "./ui/input";
 
+export interface DefaultDropdownMenu
+    extends InputProps {
+    iconClass: string,
+    label: string,
+    wrapperClassName?: string
+    options: DropdownOptions[],
+    value: string,
+    selectCallback: any
+}
 
+export const DropdownBox = React.forwardRef<HTMLInputElement, DefaultDropdownMenu>(
+    ({value = "", options = [], wrapperClassName = "", label = "", iconClass = "", required = false, selectCallback = () => {} }) => {
 
-export const DropdownBox = React.forwardRef<HTMLInputElement, any>(
-    ({value, options = [], wrapperClassName = "", label = "", iconClass = "", required = false }) => {
         return (
             <div className={"flex items-center border border-indigo-100 rounded w-100 p-2 relative" + wrapperClassName}>
                 <div className="w-2/12 max-w-[54px] flex items-center justify-around">
                     {iconClass ? <i className={`${iconClass} text-2xl`} style={{ lineHeight: '1.25rem' }}></i> : ""}
                 </div>
                 <div className="w-10/12">
-                    <label className="text-gray-700 text-sm font-normal leading-none mt-1">{label} {required ? <span className="text-red-500">*</span> : ""}</label>
+                    <label className="text-gray-700 text-sm font-normal leading-none mt-1">
+                        {label} {required ? <span className="text-red-500">*</span> : ""}
+                    </label>
                     <div>
                         <DropdownMenu>
-                            <DropdownMenuTrigger>
-                                <div>
-                                    <span>{value}</span> <i className="ud-back"></i></div></DropdownMenuTrigger>
+                            <DropdownMenuTrigger className="w-full">
+                                <div className="flex items-center justify-between w-full">
+                                    <span className="text-gray-700 text-base">{value}</span> <i className="ud-back rotate-[-90deg]"></i>
+                                </div>
+                            </DropdownMenuTrigger>
                             <DropdownMenuContent>
-                                {(options as SelectOptions[]).map((option) => 
-                                    <DropdownMenuItem key={option.key}>{ option.value }</DropdownMenuItem>
+                                {(options as DropdownOptions[]).map((option) => 
+                                    <DropdownMenuItem
+                                        className="text-base w-full"
+                                        key={option.key}
+                                        onClick={selectCallback(option.value)}>
+                                        { option.label }
+                                    </DropdownMenuItem>
                                 )}
                             </DropdownMenuContent>
                         </DropdownMenu>
