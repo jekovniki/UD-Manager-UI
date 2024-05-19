@@ -1,37 +1,54 @@
-import { TPublicRoutes } from "@/types/base";
+import { TRoutes } from "@/types/base";
 import Homepage from "./homepage";
 import Login from "./login";
 import CompanyRegister from "./company-register";
 import UserRegister from "./user-register";
+import Home from "./platform/home";
+import Funds from "./platform/funds";
+import Team from "./platform/team";
 
-const publicRoutes: TPublicRoutes[] = [{
+export const publicRoutes: TRoutes[] = [{
     name: 'Homepage',
-    key: 'home',
+    key: 'homepage',
     route: '/',
     icon: null,
     component: Homepage(),
-    sideNav: false,
 }, {
     name: 'Login',
     key: 'login',
     route: '/login',
     icon: null,
     component: Login(),
-    sideNav: false,
 }, {
     name: 'Register',
     key: 'register',
     route: '/register',
     icon: null,
     component: CompanyRegister(),
-    sideNav: false
 }, {
     name: 'Register user',
     key: 'register-user',
     route: '/register/user',
     icon: null,
     component: UserRegister(),
-    sideNav: false
 }];
 
-export const routes = [...publicRoutes];
+export const platformRoutes: TRoutes[] = [{
+    name: 'Home',
+    key: 'home',
+    route: '/home',
+    icon: null,
+    component: Home()
+}, {
+    name: 'Funds',
+    key: 'funds',
+    route: '/funds',
+    icon: null,
+    component: Funds()
+}, {
+    name: 'Team',
+    key: 'team',
+    route: '/team',
+    icon: null,
+    component: Team()
+}];
