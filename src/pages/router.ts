@@ -1,5 +1,4 @@
 import { TRoutes } from "@/types/base";
-import Homepage from "./homepage";
 import Login from "./login";
 import CompanyRegister from "./company-register";
 import UserRegister from "./user-register";
@@ -8,15 +7,9 @@ import Funds from "./platform/funds";
 import Team from "./platform/team";
 
 export const publicRoutes: TRoutes[] = [{
-    name: 'Homepage',
-    key: 'homepage',
-    route: '/',
-    icon: null,
-    component: Homepage(),
-}, {
     name: 'Login',
     key: 'login',
-    route: '/login',
+    route: '/',
     icon: null,
     component: Login(),
 }, {
@@ -36,19 +29,19 @@ export const publicRoutes: TRoutes[] = [{
 export const platformRoutes: TRoutes[] = [{
     name: 'Home',
     key: 'home',
-    route: '/home',
-    icon: null,
+    route: '/:id/home',
+    icon: "ud-home text-2xl text-primary sm:text-xl",
     component: Home()
 }, {
     name: 'Funds',
     key: 'funds',
-    route: '/funds',
-    icon: null,
+    route: '/:id/funds',
+    icon: "ud-wallet text-2xl text-primary sm:text-xl",
     component: Funds()
 }, {
     name: 'Team',
     key: 'team',
-    route: '/team',
-    icon: null,
+    route: '/:id/team',
+    icon: "ud-users text-2xl text-primary sm:text-xl",
     component: Team()
 }];

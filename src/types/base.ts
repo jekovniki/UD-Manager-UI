@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 /**
  * TRoutes
  * @name displayed on page and titel
@@ -13,6 +11,6 @@ export type TRoutes = {
     name: string,
     key: string,
     route: string,
-    icon: null | ReactNode,
+    icon: null | string,
     component: JSX.Element,
 }
