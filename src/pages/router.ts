@@ -27,19 +27,19 @@ export const publicRoutes: TRoutes[] = [{
 }];
 
 export const platformRoutes: TRoutes[] = [{
-    name: 'Home',
+    name: 'Начало',
     key: 'home',
     route: '/:id/home',
     icon: "ud-home text-2xl text-primary sm:text-xl",
     component: Home()
 }, {
-    name: 'Funds',
+    name: 'Фондове',
     key: 'funds',
     route: '/:id/funds',
     icon: "ud-wallet text-2xl text-primary sm:text-xl",
     component: Funds()
 }, {
-    name: 'Team',
+    name: 'Екип',
     key: 'team',
     route: '/:id/team',
     icon: "ud-users text-2xl text-primary sm:text-xl",
