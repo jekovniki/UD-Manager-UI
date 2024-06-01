@@ -7,7 +7,7 @@ const Home = () => {
             <div>
                 <h1>Home</h1>
             </div>
-            <div className="w-[280px]">
+            <div className="w-[320px]">
                 <Obligations />
             </div>
         </main>

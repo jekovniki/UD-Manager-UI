@@ -1,0 +1,26 @@
+/**
+ * @note I got a bit tired of the entire tailwind css. 
+ * So here I will put everything that I find too taxing to implement with tailwind
+ */
+
+a {
+    color: var(--link);
+}
+
+main {
+    background: rgba(250, 250, 250, 1);
+}
+
+.label-color {
+    color: var(--label);
+}
+nav > a {
+    font-weight: 400;
+    transition: 0.4s;
+}
+a[aria-current="page"] {
+    background: aliceblue;
+    font-weight: 600;
+    border-radius: 3px;
+    transition: 0.4s;
+}
