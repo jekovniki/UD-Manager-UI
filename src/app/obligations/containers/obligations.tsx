@@ -30,8 +30,43 @@ const Obligations = () => {
         name: '5 Подаване на документи за годишен отчет и одобрение',
         date: '2024-06-10 10:10:10.555555-05:00',
         createdBy: 'Николай Жеков'
+    }, {
+        id: 6,
+        name: 'Напомняне, подаване на годишна декларация за финансов отчет',
+        date: '2024-06-10 10:10:10.555555-05:00',
+        createdBy: 'Иван Овчаров'
+    }, {
+        id: 7,
+        name: '4 Напомняне, подавне на документи за годишен отчет и одобрение',
+        date: '2024-06-10 10:10:10.555555-05:00',
+        createdBy: 'Ива Миткова'
+    }, {
+        id: 8,
+        name: '5 Подаване на документи за годишен отчет и одобрение',
+        date: '2024-06-12 10:10:10.555555-05:00',
+        createdBy: 'Николай Жеков'
+    }, {
+        id: 9,
+        name: '5 Подаване на документи за годишен отчет и одобрение',
+        date: '2024-06-12 10:10:10.555555-05:00',
+        createdBy: 'Николай Жеков'
+    }, {
+        id: 10,
+        name: '5 Подаване на документи за годишен отчет и одобрение',
+        date: '2024-06-12 10:10:10.555555-05:00',
+        createdBy: 'Николай Жеков'
+    }, {
+        id: 11,
+        name: '5 Подаване на документи за годишен отчет и одобрение',
+        date: '2024-06-12 10:10:10.555555-05:00',
+        createdBy: 'Николай Жеков'
     }]
 
+    /**
+     * @todo: if you ever decide to change the height of the calendar, go to the obligations.scss
+     * There is calculation there for the height of the listing.
+     * It is the 100vh - height of calendar - height of button
+     */
     return (
         <div className="bg-background h-full shadow-md">
             <Calendar 
@@ -43,7 +78,7 @@ const Obligations = () => {
             <div className="px-4 my-4">
                 <Button type="button" className="w-full h-[50px] add-button" variant="secondary"><i className="ud-plus"></i> Добави Напомняне</Button>
             </div>
-            <div className="px-4">
+            <div className="px-4 obligations-list">
                 { obligations.length ?
                     <ObligationsList list={obligations} />
                     : <h5 className="label-color text-sm text-center mt-8 mb-2 font-light mb-none">Няма предстоящи задължения</h5>

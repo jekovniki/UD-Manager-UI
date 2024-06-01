@@ -13,3 +13,13 @@
 .info {
     background: rgba(50, 170, 237, 1);
 }
+
+/* edit this if the calendar height changes. 
+* 60px is the height of the top bar
+* 294px is the height of the calendar, 
+* 50px is the height of the button
+*/
+.obligations-list {
+    height: calc(100vh - 60px - 294px - 50px);
+    overflow: scroll;
+}

@@ -4,9 +4,6 @@ import { addDays, isToday, isTomorrow, isWithinInterval, intlFormat } from 'date
 import { groupBy } from 'lodash';
 
 export const ObligationsList = ({ list = [] }: { list: ObligationListItem[] }) => {
-    // const filteredList = _.groupBy(list, (obligation) => {
-    //     return obligation.date.split('T')[0];
-    // });
     const today = new Date();
     const twoDaysFromToday = addDays(today, 2);
 

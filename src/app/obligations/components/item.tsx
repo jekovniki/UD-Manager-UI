@@ -8,7 +8,10 @@ export type ObligationListItem = {
     date: string,
     createdBy: string
 }
-
+/**
+ * @todo: One sunny day when you are not bored of frontend. 
+ * Add a dialog here when clicking the entire list and clicking the trash icon
+ */
 export const ObligationItem = ({ item, severity, ...props }: { item: ObligationListItem, severity: ObligationSeverity }) => {
     const date = new Date(item.date);
     return (
@@ -26,6 +29,7 @@ export const ObligationItem = ({ item, severity, ...props }: { item: ObligationL
             <div className="w-[18px] pr-2">
                 <i className="ud-trash-can text-red-500 text-base duration-200 cursor-pointer hover:text-gray-900"></i>
             </div>
+
         </li>
     )
 }
