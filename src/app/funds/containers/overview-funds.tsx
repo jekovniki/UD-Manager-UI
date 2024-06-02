@@ -21,7 +21,38 @@ const OverviewFunds = () => {
         id: 4,
         title: 'Expat Slovakia SAX UCITS ETF',
         description: 'SK9A - Високорисков Фонд',
-        performance: 3.1
+        performance: 3.1,
+        assets: [{
+            name: 'Пари и депозити',
+            amount: 2107753,
+            currency: 'BGN',
+            percantage: 12
+        }, {
+            name: 'Корпоративни облигации',
+            amount: 16785895,
+            currency: 'BGN',
+            percantage: 20
+        }, {
+            name: 'Акции',
+            amount: 33748895,
+            currency: 'BGN',
+            percantage: 26
+        }, {
+            name: 'Дялове на КОИ',
+            amount: 6085723,
+            currency: 'BGN',
+            percantage: 26
+        }, {
+            name: 'Вземания',
+            amount: 74256,
+            currency: 'BGN',
+            percantage: 1
+        }, {
+            name: 'Други активи',
+            amount: 4302981,
+            currency: 'BGN',
+            percantage: 9
+        }]
     }, {
         id: 5,
         title: 'Activa Asset Management',

@@ -1,5 +1,5 @@
 import Obligations from "@/app/obligations/containers/obligations";
-import OverviewFunds from "@/app/funds/containers/overview";
+import OverviewFunds from "@/app/funds/containers/overview-funds";
 
 const Home = () => {
 
