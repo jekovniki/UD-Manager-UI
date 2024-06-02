@@ -18,7 +18,7 @@ export interface DefaultDropdownMenu extends InputProps {
 }
 
 export const DropdownBox = React.forwardRef<HTMLInputElement, DefaultDropdownMenu>(
-    ({ value = "", options = [], placeholder,  wrapperClassName = "", label = "", iconClass = "", required = false, selectCallback }, ref) => {
+    ({ value = "", options = [], placeholder,  wrapperClassName = "", label = "", iconClass = "", required = false, selectCallback }) => {
         return (
             <div className={"flex items-center border border-indigo-100 rounded w-100 p-2 relative " + wrapperClassName}>
                 <div className="w-2/12 max-w-[54px] flex items-center justify-around">
@@ -30,7 +30,7 @@ export const DropdownBox = React.forwardRef<HTMLInputElement, DefaultDropdownMen
                     </label>
                     <div>
                         <DropdownMenu>
-                            <DropdownMenuTrigger ref={ref} className="w-full">
+                            <DropdownMenuTrigger className="w-full">
                                 <div className="flex items-center justify-between w-full">
                                     <span className="text-gray-700 text-base">{value ? value : placeholder}</span> <i className="ud-back rotate-[-90deg]"></i>
                                 </div>
