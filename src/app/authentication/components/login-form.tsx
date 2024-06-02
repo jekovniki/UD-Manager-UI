@@ -10,7 +10,7 @@ export const LoginForm = () => {
     const onSubmit = (data: any) => {
         console.log(data);
         setTimeout(() => {
-            navigate("/")
+            navigate("/aug/home")
         }, 5000);
     }
 

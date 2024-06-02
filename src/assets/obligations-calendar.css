@@ -1,0 +1,80 @@
+
+.react-calendar__navigation {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.obligations-calendar {
+    border-bottom: 1px solid #0000000D;
+}
+
+.react-calendar__navigation__label__labelText {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.react-calendar__navigation__arrow {
+    font-size: 40px;
+    font-weight: 100;
+}
+
+.react-calendar__month-view__weekdays {
+    text-align: center;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #0000000D;
+}
+
+.react-calendar__month-view__weekdays abbr {
+    font-size: 11.42px;
+    line-height: 13.82px;
+    color: #00000066;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.react-calendar__month-view__days abbr {
+    font-size: 13.7px;
+    line-height: 16.58px;
+    font-weight: 600;
+    color: #0C2134;
+}
+
+.react-calendar__month-view__days button{
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+.react-calendar__month-view__days__day--neighboringMonth abbr {
+    color: #0C213473!important;
+}
+
+button.add-button {
+    background: rgba(10, 109, 200, 0.07)!important;
+    font-size: 14px;
+    line-height: 17px;
+    color: #0C2134;
+    font-weight: 500;
+    transition: .4s;
+}
+
+button.add-button i {
+    color: rgba(10, 109, 200, 1);
+    font-size: 20px;
+    line-height:25px;
+    margin-right: 5px;
+    transition: .4s;
+}
+
+button.add-button:hover {
+    background: rgba(10, 109, 200, 1)!important;
+    color: #fff;
+    transition: .4s;
+}
+
+button.add-button:hover i {
+    color: #fff;
+    transition: .4s;
+}

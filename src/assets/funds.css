@@ -1,0 +1,22 @@
+.funds-section {
+    border-bottom: 1px solid #0000000D;
+}
+
+.fund-accordion-trigger > svg {
+    display: none!important;
+    transition: .4s;
+}
+
+.fund-accordion-trigger .icon-box:hover {
+    background: hsl(var(--primary));
+    transition: .4s;
+}
+
+.fund-accordion-trigger i {
+    transition: .4s;
+}
+
+.fund-accordion-trigger .main-bg:hover i {
+    color: #fff;
+    transition: .4s;
+}
