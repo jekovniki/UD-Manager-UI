@@ -6,22 +6,27 @@ const OverviewFunds = () => {
         id: 1, // will be uuid,
         title: 'Expat Gold',
         description: 'GLDX - Високорисков Фонд',
-        performance: '+ 3.2%' // @todo: this will not be a string 100%,
+        performance: 3.2 // @todo: this will not be a string 100%,
     }, {
         id: 2,
         title: 'Expat Poland WIG20 UCITS ETF',
         description: 'PLX - Високорисков Фонд',
-        performance: '- 2.4%'
+        performance: -2.4
     }, {
         id: 3,
         title: 'Expat Czech PX UCITS ETF',
         description: 'CZX - Високорисков Фонд',
-        performance: '- 3.2%'
+        performance: -3.2
     }, {
         id: 4,
         title: 'Expat Slovakia SAX UCITS ETF',
         description: 'SK9A - Високорисков Фонд',
-        performance: '+ 3.1%'
+        performance: 3.1
+    }, {
+        id: 5,
+        title: 'Activa Asset Management',
+        description: 'AATV - Високодоходен Фонд',
+        performance: 0
     }]
 
     return (

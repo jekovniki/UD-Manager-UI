@@ -7,7 +7,7 @@ export interface FundOverviewItem {
     id: number,
     title: string,
     description: string,
-    performance: string
+    performance: number
 }
 
 export const FundOverviewList = ({ list }: { list: FundOverviewItem[] }) => {

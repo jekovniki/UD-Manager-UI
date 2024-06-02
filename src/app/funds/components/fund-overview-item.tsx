@@ -6,10 +6,20 @@ import {
 import { FundOverviewItem } from "./fund-overview-list"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import { MoreHorizontal } from "lucide-react"
 
 export const FundOverviewAccordion = ({ item, ...props }: { item: FundOverviewItem }) => {
+    function getBadgeColor(number: number): 'default' | 'destructive' | 'success' {
+        if (number < 0) {
+            return 'destructive';
+        }
+        if (number > 0) {
+            return 'success';
+        }
 
+        return 'default';
+    }
     return (
         <AccordionItem value={item.title} {...props}>
             <AccordionTrigger className="fund-accordion-trigger hover:no-underline">
@@ -18,7 +28,11 @@ export const FundOverviewAccordion = ({ item, ...props }: { item: FundOverviewIt
                         <i className="ud-wallet text-xl label-color"></i>
                     </div>
                     <div className="ml-4 text-left">
-                        <h3 className="text-base font-normal">{item.title}</h3>
+                        <h3 className="text-base font-normal">{item.title} <Badge variant={getBadgeColor(item.performance)}>
+                            { item.performance > 0 ? "+" : ""}
+                            { item.performance } %
+                            </Badge>
+                        </h3>
                         <h5 className="text-sm label-color font-light">{item.description}</h5>
                     </div>
                 </div>
