@@ -27,7 +27,7 @@ export const FundOverviewAccordion = ({ item, ...props }: { item: FundOverviewIt
                         <i className="ud-wallet text-xl label-color"></i>
                     </div>
                     <div className="ml-4 text-left">
-                        <h3 className="text-base font-normal">{item.title} <Badge variant={getBadgeColor(item.performance)}>
+                        <h3 className="text-base font-normal">{item.title} <Badge variant={getBadgeColor(item.performance)} className="text-xs mt-[-5px]">
                             { item.performance > 0 ? "+" : ""}
                             { item.performance } %
                             </Badge>

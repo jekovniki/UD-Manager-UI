@@ -65,7 +65,7 @@ const Obligations = () => {
     /**
      * @todo: if you ever decide to change the height of the calendar, go to the obligations.scss
      * There is calculation there for the height of the listing.
-     * It is the 100vh - height of calendar - height of button
+     * It is the 100vh - height of the top line - height of calendar - height of button
      */
     return (
         <div className="bg-background h-full shadow-md">
