@@ -1,6 +1,28 @@
 import { Button } from "@/components/ui/button";
+import { FundOverviewList } from "../components/fund-overview-list";
 
-const OverviewFunds = ({ list } : { list: Record<string, any>[]}) => {
+const OverviewFunds = () => {
+    const funds = [{
+        id: 1, // will be uuid,
+        title: 'Expat Gold',
+        description: 'GLDX - Високорисков Фонд',
+        performance: '+ 3.2%' // @todo: this will not be a string 100%,
+    }, {
+        id: 2,
+        title: 'Expat Poland WIG20 UCITS ETF',
+        description: 'PLX - Високорисков Фонд',
+        performance: '- 2.4%'
+    }, {
+        id: 3,
+        title: 'Expat Czech PX UCITS ETF',
+        description: 'CZX - Високорисков Фонд',
+        performance: '- 3.2%'
+    }, {
+        id: 4,
+        title: 'Expat Slovakia SAX UCITS ETF',
+        description: 'SK9A - Високорисков Фонд',
+        performance: '+ 3.1%'
+    }]
 
     return (
         <>
@@ -14,6 +36,9 @@ const OverviewFunds = ({ list } : { list: Record<string, any>[]}) => {
                         Създай фонд
                     </Button>
                 </div>
+            </div>
+            <div className="funds-section flex justify-between items-center px-4 py-4">
+                <FundOverviewList list={funds} />
             </div>
         </>
 
