@@ -25,6 +25,7 @@ module.exports = {
         label: "hsl(var(--label))",
         link: "hsl(var(--link))",
         ring: "hsl(var(--ring))",
+        sectionTitle: 'hsl(var(--section-title))',
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
