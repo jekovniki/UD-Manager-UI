@@ -13,7 +13,7 @@ export interface FundOverviewItem {
 export const FundOverviewList = ({ list }: { list: FundOverviewItem[] }) => {
     return (
         <Accordion type="multiple" className="w-full">
-            {list.map(fund => <FundOverviewAccordion item={fund} />)}
+            {list.map(fund => <FundOverviewAccordion key={fund.id} item={fund} />)}
         </Accordion>
     )
 }

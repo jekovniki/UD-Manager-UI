@@ -4,10 +4,9 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 import { FundOverviewItem } from "./fund-overview-list"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Button } from "@/components/ui/button"
+// import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+// import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { MoreHorizontal } from "lucide-react"
 
 export const FundOverviewAccordion = ({ item, ...props }: { item: FundOverviewItem }) => {
     function getBadgeColor(number: number): 'default' | 'destructive' | 'success' {
@@ -43,14 +42,14 @@ export const FundOverviewAccordion = ({ item, ...props }: { item: FundOverviewIt
                     <div className="main-bg h-[40px] w-[40px] flex items-center justify-around rounded icon-box duration-300 hover:bg-primary">
                         <i className="ud-pie-chart text-xl label-color"></i>
                     </div>
-                    <DropdownMenu>
+                    {/* @todo:  Think about weather you need this or move this in the page<DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button
                                 aria-haspopup="true"
                                 size="icon"
                                 variant="ghost"
                             >
-                                <MoreHorizontal className="h-4 w-4" />
+                                <MoreVertical className="h-4 w-4" />
                                 <span className="sr-only">Toggle menu</span>
                             </Button>
                         </DropdownMenuTrigger>
@@ -59,7 +58,7 @@ export const FundOverviewAccordion = ({ item, ...props }: { item: FundOverviewIt
                             <DropdownMenuItem>Edit</DropdownMenuItem>
                             <DropdownMenuItem>Delete</DropdownMenuItem>
                         </DropdownMenuContent>
-                    </DropdownMenu>
+                    </DropdownMenu> */}
                 </div>
             </AccordionTrigger>
             <AccordionContent>

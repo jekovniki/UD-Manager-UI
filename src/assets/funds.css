@@ -7,7 +7,7 @@
     transition: .4s;
 }
 
-.fund-accordion-trigger .fund-left:hover .icon-box {
+.fund-accordion-trigger .icon-box:hover {
     background: hsl(var(--primary));
     transition: .4s;
 }
@@ -16,12 +16,7 @@
     transition: .4s;
 }
 
-.fund-accordion-trigger .fund-left:hover i {
-    color: #fff;
-    transition: .4s;
-}
-
-.fund-accordion-trigger .fund-left + div .main-bg:hover i {
+.fund-accordion-trigger .main-bg:hover i {
     color: #fff;
     transition: .4s;
 }
