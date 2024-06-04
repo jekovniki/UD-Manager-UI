@@ -6,6 +6,13 @@
     NPM_CONFIG_FUND = 'false' # the fund notification is also pretty useless in a production environment
     CADDY_VERSION = '2.7.6' # specify the caddy version to use here, without a 'v' prefix. https://github.com/caddyserver/caddy/releases
 
+[phases.setup]
+    cmds = [
+        'apt-get update',
+        'apt-get install -y curl',
+        'curl -fsSL https://deb.nodesource.com/setup_16.x | bash -', # setup Node.js repository (you can choose a different version if needed)
+        'apt-get install -y nodejs', # install Node.js and npm
+    ]
 # download and untar caddy
 [phases.caddy]
     dependsOn = ['setup'] # make sure this phase runs after the default 'setup' phase
