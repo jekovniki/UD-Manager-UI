@@ -9,7 +9,7 @@ export const LoginForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { mutate, isPending } = useLogin();
     const navigate = useNavigate();
-    console.log('isPending : ', isPending);
+
     const onSubmit = (data: any) => {
         try {
             mutate(data, {

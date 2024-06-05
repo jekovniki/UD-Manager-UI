@@ -17,7 +17,6 @@ export const ROLES = [{
 export const CompanyRegisterEmployees = ({ employees, setEmployees }: { employees: RegisterEmployee[] | any, setEmployees: any}) => {
     const [email, setEmail] = useState('');
     const [role, setRole] = useState('');
-
     const isValidEmail = email && email.includes('@');
 
     const addEmployee = () => {
