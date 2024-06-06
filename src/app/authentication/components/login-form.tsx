@@ -17,7 +17,6 @@ export const LoginForm = () => {
         try {
             mutate(data, {
                 onSuccess: () => {
-                    throw new Error('Greshka');
                     navigate("/aug/home");
                 },
                 onError: error => console.error(error)
