@@ -1,4 +1,4 @@
-import { TRoutes } from "@/types/base";
+import { TRoutes } from "@/dtos/routes";
 import Login from "./login";
 import CompanyRegister from "./company-register";
 import UserRegister from "./user-register";

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { InputBox } from "@/components/input-box";
 import { DropdownBox } from "@/components/dropdown-box";
 import { Button } from "@/components/ui/button";
-import { RegisterEmployee } from "@/interfaces/authentication";
+import { RegisterEmployee } from "../dtos/authentication";
 
 export const ROLES = [{
     key: "admin",

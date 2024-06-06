@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { UploadImage } from "@/components/upload-image";
 import { useForm } from "react-hook-form";
 import { CompanyRegisterEmployees } from "./company-register-employees";
-import { EmployeeRoles } from "@/interfaces/authentication";
+import { EmployeeRoles } from "../dtos/authentication";
 import { useCompanyRegister } from "../api/use-company-register";
 import LoaderContainer from "@/containers/loader";
 
