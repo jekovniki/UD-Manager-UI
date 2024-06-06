@@ -4,22 +4,31 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useLogin } from "../api/use-login";
 import LoaderContainer from "@/containers/loader";
+import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 
 export const LoginForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { mutate, isPending } = useLogin();
+    const { toast } = useToast();
     const navigate = useNavigate();
 
     const onSubmit = (data: any) => {
         try {
             mutate(data, {
                 onSuccess: () => {
+                    throw new Error('Greshka');
                     navigate("/aug/home");
                 },
                 onError: error => console.error(error)
             });
         } catch (error) {
-            console.error(error);
+            toast({
+                variant: "destructive",
+                title: "Ух! Временно приложението не работи",
+                description: "Причината за тази грешка е, че временно приложението не работи. Извиняваме се за неудобството, нашите програмисти се опитват да го възстановят. Опитайте отново да извършите действието след 5 минути.",
+                action: <ToastAction altText="Try again">Опитай пак</ToastAction>
+            })
         }
     }
 
