@@ -7,7 +7,7 @@
  * @component the component that will be rendered
  */
 
-export type TRoutes = {
+ export type TRoutes = {
     name: string,
     key: string,
     route: string,

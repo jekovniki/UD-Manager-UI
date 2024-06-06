@@ -5,7 +5,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { DropdownOptions } from "@/interfaces/base";
+import { DropdownOptions } from "@/dtos/base";
 import { InputProps } from "./ui/input";
 
 export interface DefaultDropdownMenu extends InputProps {
