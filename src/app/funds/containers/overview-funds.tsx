@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { FundOverviewList } from "../components/fund-overview-list";
+import { AddFundModal } from "../components/add-fund-modal";
 
 const OverviewFunds = () => {
     const funds = [{
@@ -68,9 +69,7 @@ const OverviewFunds = () => {
                     <p className="text-sm label-color font-light">Създайте и менажирайте фондове</p>
                 </div>
                 <div>
-                    <Button variant="default" size='lg' className="font-light text-xs rounded-sm">
-                        Създай фонд
-                    </Button>
+                    <AddFundModal />
                 </div>
             </div>
             <div className="funds-section flex justify-between items-center px-4 py-4">
