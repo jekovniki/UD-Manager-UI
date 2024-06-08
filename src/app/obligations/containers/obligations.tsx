@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import "../styles/obligations-calendar.css";
 import Calendar from "react-calendar";
 import { ObligationsList } from "../components/list";
+import { AddObligationModal } from "../components/add-obligation-modal";
 
 const Obligations = () => {
 
@@ -75,9 +76,7 @@ const Obligations = () => {
                 next2Label={null}
                 prev2Label={null}
             />
-            <div className="px-4 my-4">
-                <Button type="button" className="w-full h-[50px] add-button" variant="secondary"><i className="ud-plus"></i> Добави Напомняне</Button>
-            </div>
+            <AddObligationModal />
             <div className="px-4 obligations-list">
                 { obligations.length ?
                     <ObligationsList list={obligations} />
