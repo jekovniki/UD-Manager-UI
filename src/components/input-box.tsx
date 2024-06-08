@@ -12,12 +12,12 @@ export interface DefaultInput
 export const InputBox = React.forwardRef<HTMLInputElement, DefaultInput>(
     ({ id, className, autoComplete, wrapperClassName = "", type, label = "", iconClass = "", placeholder = "", required = false, ...props }, ref) => {
         return (
-            <div className={"flex items-center border border-indigo-100 rounded w-100 p-2 " + wrapperClassName}>
+            <div className={"flex items-center border border-indigo-100 rounded w-100 p-2 input-box-custom" + wrapperClassName}>
                 <div className="w-2/12 max-w-[54px] flex items-center justify-around">
                     {iconClass ? <i className={`${iconClass} text-2xl`} style={{lineHeight: '1.25rem'}}></i> : ""}
                 </div>
                 <div className="w-10/12">
-                    <label className="text-gray-700 text-sm font-normal leading-none mt-1">{label} { required ? <span className="text-red-500">*</span> : ""}</label>
+                    <label htmlFor={id} className="text-gray-700 text-sm font-normal leading-none mt-1">{label} { required ? <span className="text-red-500">*</span> : ""}</label>
                     <Input
                         id={id}
                         type={type}
