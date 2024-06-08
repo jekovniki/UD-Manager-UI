@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import "../../../assets/obligations-calendar.css";
+import "../styles/obligations-calendar.css";
 import Calendar from "react-calendar";
 import { ObligationsList } from "../components/list";
 
