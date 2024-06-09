@@ -20,3 +20,10 @@
     color: #fff;
     transition: .4s;
 }
+
+/*
+ * Fund wizzard content height, 100px is the height of the header and 110px is the height of the footer
+ */
+.fund-wizzard-content-height {
+    height: calc(100vh - 100px - 110px);
+}

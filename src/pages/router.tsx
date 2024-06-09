@@ -15,19 +15,19 @@ export const publicRoutes: TRoutes[] = [{
     key: 'login',
     route: '/',
     icon: null,
-    component: Login(),
+    component: <Login />,
 }, {
     name: 'Register',
     key: 'register',
     route: '/register',
     icon: null,
-    component: CompanyRegister(),
+    component: <CompanyRegister />,
 }, {
     name: 'Register user',
     key: 'register-user',
     route: '/register/user',
     icon: null,
-    component: UserRegister(),
+    component: <UserRegister />,
 }];
 
 /**
@@ -38,19 +38,19 @@ export const platformRoutes: TRoutes[] = [{
     key: 'home',
     route: '/:id/home',
     icon: "ud-home text-2xl text-primary sm:text-xl",
-    component: Home()
+    component: <Home />
 }, {
     name: 'Фондове',
     key: 'funds',
     route: '/:id/funds',
     icon: "ud-wallet text-2xl text-primary sm:text-xl",
-    component: Funds()
+    component: <Funds />
 }, {
     name: 'Екип',
     key: 'team',
     route: '/:id/team',
     icon: "ud-users text-2xl text-primary sm:text-xl",
-    component: Team()
+    component: <Team />
 }];
 
 /**
@@ -62,5 +62,5 @@ export const platformRoutesCustom: TRoutes[] = [{
     key: 'add-assets',
     route: '/:id/funds/add',
     icon: null,
-    component: FundAssetsWizzard(),
+    component: <FundAssetsWizzard />,
 }]
