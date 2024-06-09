@@ -12,9 +12,19 @@ import {
 } from "@/components/ui/dialog"
 import { useForm } from "react-hook-form";
 
+export const ROLES = [{
+    key: "asd",
+    value: 'Администратор',
+    label: 'Администратор'
+}, {
+    key: 'dsdsf',
+    value: 'a.stoyanova@ud-manager.com',
+    label: 'Служител'
+}]
+
 export const AddFundModal = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = (data) => {
+    const onSubmit = (data: any) => {
         console.log(data);
     }
     return (
@@ -39,10 +49,19 @@ export const AddFundModal = () => {
                         label="Наименование"
                         autoComplete="fund-name"
                         placeholder="Име на фонда"
+                        wrapperClassName="mb-4"
                         required
                         {...register('fund-name', {
                             required: true,
                         })}
+                    />
+                    <InputBox
+                        id="fund-description"
+                        type="text"
+                        iconClass="ud-text"
+                        label="Допълнително описание"
+                        autoComplete="fund-description"
+                        placeholder="Описание за КИС, например - Високорисков Фонд"
                     />
                     <div className="flex mt-4 gap-4">
                         <InputBox
