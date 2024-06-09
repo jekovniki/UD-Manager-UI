@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { FundOverviewList } from "../components/fund-overview-list";
 import { AddFundModal } from "../components/add-fund-modal";
 
