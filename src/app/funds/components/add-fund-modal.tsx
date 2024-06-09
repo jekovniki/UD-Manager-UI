@@ -11,7 +11,7 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useAddFund } from "../api/use-add-fund";
 import LoaderContainer from "@/containers/loader";
 
@@ -27,7 +27,8 @@ export const ROLES = [{
 
 export const AddFundModal = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
+    console.error(errors);
     const { mutate, isPending } = useAddFund();
     const onSubmit = (data: any) => {
         try {
@@ -108,6 +109,9 @@ export const AddFundModal = () => {
                                 placeholder="Три имена на председателя"
                                 required
                             />
+                        </div>
+                        <div className="mt-4">
+                            {errors?.uic?.message && <p className="text-red-500 text-xs italic">{errors?.uic?.message as string}</p>}
                         </div>
                         <DialogFooter className="mt-8">
                             <DialogClose asChild>
