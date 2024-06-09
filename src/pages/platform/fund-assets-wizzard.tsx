@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 const FundAssetsWizzard = () => {
     const [currentStep, setCurrentStep] = useState<number>(1);
     const [currentTab, setCurrentTab] = useState<'file' | 'manual'>('file');
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const { register } = useForm();
 
 
     const incrementStep = () => {
