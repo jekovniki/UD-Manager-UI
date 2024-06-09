@@ -1,13 +1,19 @@
-// import { useState } from "react";
-import React from "react";
+import { useState } from "react";
 import { AssetWizzardStep } from "@/app/funds/components/asset-wizzard-step";
 import { Button } from "@/components/ui/button";
+import { InputBox } from "@/components/input-box";
+import { useForm } from "react-hook-form";
 
-
+/**
+ * @todo: refactor this when you start implementing the API (separate into components), because currently it's like 
+ * Scary movie, but worse.
+ */
 const FundAssetsWizzard = () => {
-    const useState = React.useState;
     const [currentStep, setCurrentStep] = useState<number>(1);
-    console.log(currentStep);
+    const [currentTab, setCurrentTab] = useState<'file' | 'manual'>('file');
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+
+
     const incrementStep = () => {
         setCurrentStep(currentStep + 1);
     }
@@ -31,8 +37,68 @@ const FundAssetsWizzard = () => {
                     Left
                 </section>
                 <section id="form" className="w-[380px] bg-background h-full border-l">
-                    <div className="p-4">
-
+                    <nav>
+                        <ul key="wizzard-tabs" className="flex items-center h-[80px]">
+                            <li 
+                                key="file-add" 
+                                className={`flex-1 h-full cursor-pointer flex items-center justify-around text-sm duration-500 ${currentTab === 'file' ? 'font-bold text-black border-black border-b-4' : 'text-slate-500 border-b border-slate-200'}`}
+                                onClick={() => {setCurrentTab('file')}}
+                                >
+                                Добави чрез файл
+                            </li>
+                            <li 
+                                key="manual-add" 
+                                className={`flex-1 h-full cursor-pointer flex items-center justify-around text-sm duration-500 ${currentTab === 'manual' ? 'font-bold text-black border-black border-b-4' : 'text-slate-500 border-b border-slate-200'}`}
+                                onClick={() => {setCurrentTab('manual')}}
+                                >
+                                Добави ръчно
+                            </li>
+                        </ul>
+                    </nav>
+                    <div className="pt-8 px-4">
+                        <InputBox id="asset-isin"
+                            type="asset-isin"
+                            wrapperClassName="mb-4"
+                            iconClass="ud-text"
+                            label="Борсов код"
+                            autoComplete="asset-isin"
+                            placeholder="ISIN"
+                            required
+                            {...register('asset-isin', {
+                                required: true
+                            })}/>
+                        <InputBox id="asset-name"
+                            type="asset-name"
+                            wrapperClassName="mb-4"
+                            iconClass="ud-text"
+                            label="Наименование"
+                            autoComplete="asset-name"
+                            placeholder="Напр. ШЕЛЛИ ГРУП АД"
+                            required
+                            {...register('asset-name', {
+                                required: true
+                            })}/>
+                        <InputBox id="asset-price"
+                            type="asset-price"
+                            wrapperClassName="mb-4"
+                            iconClass="ud-price-tag"
+                            label="Цена за брой(лв.)"
+                            autoComplete="asset-price"
+                            placeholder="Напр. 60.00лв."
+                            required
+                            {...register('asset-price', {
+                                required: true
+                            })}/>
+                        <InputBox id="asset-number"
+                            type="asset-number"
+                            iconClass="ud-add-list"
+                            label="Цена за брой(лв.)"
+                            autoComplete="asset-number"
+                            placeholder="Напр. 10 000"
+                            required
+                            {...register('asset-number', {
+                                required: true
+                            })}/>
                     </div>
                 </section>
             </div>

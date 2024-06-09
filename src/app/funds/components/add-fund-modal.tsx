@@ -11,10 +11,10 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { useForm } from "react-hook-form";
-// import { useNavigate } from "react-router-dom";
 import { useAddFund } from "../api/use-add-fund";
 import LoaderContainer from "@/containers/loader";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export const ROLES = [{
     key: "asd",
@@ -27,21 +27,29 @@ export const ROLES = [{
 }]
 
 export const AddFundModal = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    // const navigate = useNavigate();
-    console.error(errors);
-    const { mutate, isPending, isSuccess } = useAddFund();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const { mutate, isPending } = useAddFund();
+    /**
+     * I use because I can't invalidate the isSuccess from the react-query
+     * @see: https://github.com/TanStack/query/discussions/1014#discussioncomment-79334
+     */ 
+    const [isSuccess, setSuccess] = useState(false); 
+
     const onSubmit = (data: any) => {
         try {
             mutate(data, {
                 onSuccess: () => {
-                    console.log('success');
+                    setSuccess(true);
                 },
                 onError: error => console.error(error)
             });
         } catch (error) {
             console.error(error);
         }
+    }
+    const onClose = () => {
+        setSuccess(false);
+        reset();
     }
     return (
         <Dialog>
@@ -60,7 +68,7 @@ export const AddFundModal = () => {
                             <p className="text-center mb-2">Ако желаете можете да продължите с регистрацията и в следващите стъпки да добавите информация за активите (Акции, Облигации, Пари и депозити и т.н.) и ограниченията на фонда. </p>
                             <p className="text-center mb-2">Имате възможност и да пропуснете тази стъпка и да добавите активите и задълженията на по-късен етап.</p>
                             <div className="flex items-center gap-2">
-                                <DialogClose asChild>
+                                <DialogClose asChild onClick={onClose}>
                                     <Button variant="secondary" size='lg'>
                                         Пропусни
                                     </Button>
