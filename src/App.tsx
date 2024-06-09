@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider } from './components/theme-provider';
 import { TRoutes } from '@/dtos/routes';
-import { publicRoutes, platformRoutes } from './pages/router';
+import { publicRoutes, platformRoutes, platformRoutesCustom } from './pages/router';
 import { THEME_STORAGE_KEY } from './utils/constants';
 import { ErrorBoundary } from 'react-error-boundary';
 import { DefaultErrorBoundary } from './components/error-boundary';
@@ -30,6 +30,7 @@ function App() {
             <Route element={<PlatformLayout />}>
               { setRoutes(platformRoutes) }
             </Route>
+            { setRoutes(platformRoutesCustom) }
             { setRoutes(publicRoutes) }
             <Route path="/404" element={<NotFound />} key="not-found" />
             <Route path="*" element={<Navigate to="/404"/>} />
