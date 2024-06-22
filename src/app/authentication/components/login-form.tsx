@@ -13,7 +13,7 @@ export const LoginForm = () => {
     const { toast } = useToast();
     const navigate = useNavigate();
 
-    const onSubmit = (data: any) => {
+    const onSubmit = (data: unknown) => {
         try {
             mutate(data, {
                 onSuccess: () => {

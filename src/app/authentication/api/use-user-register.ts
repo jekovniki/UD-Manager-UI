@@ -1,7 +1,7 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { InvalidateQueryFilters, useMutation, useQueryClient } from "@tanstack/react-query";
 import { AuthenticationQueryKeys } from "./query-keys";
 
-const mockApi = (data: any): Promise<any> => {
+const mockApi = (data: unknown): Promise<{ data: string }> => {
     console.log('mockApi data: ', data);
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -11,10 +11,10 @@ const mockApi = (data: any): Promise<any> => {
 }
 
 export function useUserRegister() {
-    const client = useQueryClient();
+    const client = useQueryClient(); 
 
     return useMutation({
         mutationFn: mockApi,
-        onSuccess: () => client.invalidateQueries(AuthenticationQueryKeys.EmployeeRegister as any)
+        onSuccess: () => client.invalidateQueries(AuthenticationQueryKeys.EmployeeRegister as InvalidateQueryFilters)
     })
 }

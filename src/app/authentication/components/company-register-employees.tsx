@@ -1,25 +1,31 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { InputBox } from "@/components/input-box";
 import { DropdownBox } from "@/components/dropdown-box";
 import { Button } from "@/components/ui/button";
-import { RegisterEmployee } from "../dtos/authentication";
+import { EmployeeRoles, RegisterEmployee } from "../dtos/authentication";
 
-export const ROLES = [{
-    key: "admin",
-    value: 'Администратор',
-    label: 'Администратор'
-}, {
-    key: 'employee',
-    value: 'Служител',
-    label: 'Служител'
-}]
-
-export const CompanyRegisterEmployees = ({ employees, setEmployees }: { employees: RegisterEmployee[] | any, setEmployees: any}) => {
+export const CompanyRegisterEmployees = ({ employees = [], setEmployees }: { employees: RegisterEmployee[], setEmployees: React.Dispatch<React.SetStateAction<{
+    role: EmployeeRoles;
+    email: string;
+}[]>>
+ }) => {
     const [email, setEmail] = useState('');
-    const [role, setRole] = useState('');
+    const [role, setRole] = useState<EmployeeRoles | string>('');
     const isValidEmail = email && email.includes('@');
+    const ROLES = [{
+        key: "admin",
+        value: 'Администратор',
+        label: 'Администратор'
+    }, {
+        key: 'employee',
+        value: 'Служител',
+        label: 'Служител'
+    }]
 
     const addEmployee = () => {
+        if (role !== 'admin' && role !== 'employee') {
+            return;
+        }
         setEmployees([...employees, { email, role }]);
         setRole('');
         setEmail('')
@@ -46,7 +52,7 @@ export const CompanyRegisterEmployees = ({ employees, setEmployees }: { employee
                         autoComplete="email-employee"
                         placeholder="Имейл на служителя"
                         wrapperClassName="rounded-r-none"
-                        onChange={(event: any) => { setEmail(event.target.value) }}
+                        onChange={(event: ChangeEvent<HTMLInputElement>) => { setEmail(event.target.value) }}
                     />
                 </div>
                 <div className="sm:flex-1 w-full">
@@ -77,13 +83,13 @@ export const CompanyRegisterEmployees = ({ employees, setEmployees }: { employee
                 </Button>
             </div>
             <div className="flex flex-col items-center mt-4">
-                {employees.map((employee: Record<string, string>, index: number) =>
+                {employees.map((employee: RegisterEmployee, index: number) =>
                     <div key={index} className="flex items-center w-full justify-between p-4 mb-4 bg-secondary rounded-sm">
                         <div className="flex items-center">
                             <i className='ud-at-sign text-2xl w-10' style={{ lineHeight: '1.25rem' }}></i>
                             <div className="text-sm">
                                 <p><strong>{employee.email}</strong></p>
-                                <p className="text-gray-500">{ (ROLES as any).find((role: any) => role.value === employee.role).label }</p>
+                                <p className="text-gray-500">{ ROLES.find((role) => role.value === employee.role || '')?.label }</p>
                             </div>
                         </div>
                         <div>

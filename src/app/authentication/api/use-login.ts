@@ -1,7 +1,7 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { InvalidateQueryFilters, useMutation, useQueryClient } from "@tanstack/react-query";
 import { AuthenticationQueryKeys } from "./query-keys";
 
-const mockApi = (data: any): Promise<any> => {
+const mockApi = (data: unknown): Promise<{ data: string }> => {
     console.log('mockApi data: ', data);
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -15,6 +15,6 @@ export function useLogin() {
 
     return useMutation({
         mutationFn: mockApi,
-        onSuccess: () => client.invalidateQueries(AuthenticationQueryKeys.Login as any)
+        onSuccess: () => client.invalidateQueries(AuthenticationQueryKeys.Login as InvalidateQueryFilters)
     })
 }
