@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-export const UploadImage = ({ handleFile, ...props }: { handleFile: any }) => {
+export const UploadImage = ({ handleFile, ...props }: { handleFile: unknown }) => {
     const [preview, setPreview] = useState<string | ArrayBuffer | null>(null);
-
+    console.log('handleFile : ', handleFile);
     const handlePreview = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files && event.target.files[0];
         if (file) {

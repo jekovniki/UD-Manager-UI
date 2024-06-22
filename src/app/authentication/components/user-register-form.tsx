@@ -10,7 +10,7 @@ export const UserRegisterForm = () => {
     const { mutate, isPending, isSuccess } = useUserRegister();
     console.log(errors);
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data: unknown) => {
         try {
             mutate(data, {
                 onSuccess: (response) => {

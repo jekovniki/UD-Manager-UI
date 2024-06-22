@@ -16,16 +16,6 @@ import LoaderContainer from "@/containers/loader";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-export const ROLES = [{
-    key: "asd",
-    value: 'Администратор',
-    label: 'Администратор'
-}, {
-    key: 'dsdsf',
-    value: 'a.stoyanova@ud-manager.com',
-    label: 'Служител'
-}]
-
 export const AddFundModal = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { mutate, isPending } = useAddFund();
@@ -35,7 +25,7 @@ export const AddFundModal = () => {
      */ 
     const [isSuccess, setSuccess] = useState(false); 
 
-    const onSubmit = (data: any) => {
+    const onSubmit = (data: unknown) => {
         try {
             mutate(data, {
                 onSuccess: () => {

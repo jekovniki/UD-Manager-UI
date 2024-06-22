@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { InputBox } from "@/components/input-box";
 import { Button } from "@/components/ui/button";
 import { UploadImage } from "@/components/upload-image";
@@ -13,7 +13,7 @@ export const CompanyRegisterForm = () => {
     const [employees, setEmployees] = useState<{ role: EmployeeRoles, email: string }[]>([]);
     const { mutate, isPending, isSuccess } = useCompanyRegister();
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data: Record<string, string>) => {
 
         mutate({ ...data, employees }, {
             onSuccess: () => { },
@@ -21,7 +21,7 @@ export const CompanyRegisterForm = () => {
         })
     }
 
-    const handleFile = (event: any) => {
+    const handleFile = (event: ChangeEvent<HTMLInputElement>) => {
         // @todo: add logic when beckend is ready
         console.log('Handle File to be implemented :', event);
     }
