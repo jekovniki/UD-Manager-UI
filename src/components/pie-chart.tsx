@@ -15,7 +15,7 @@ export const PieChart = () => {
 		],
 		datasets: [
 			{
-				label: "Пари",
+				label: "Сума в лева",
 				data: [2107753, 16785895, 33748813, 6085723, 74256, 4302981],
 				backgroundColor: [
 					"rgba(249, 199, 79, 1)",
