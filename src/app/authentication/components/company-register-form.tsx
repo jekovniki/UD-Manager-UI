@@ -25,10 +25,8 @@ export const CompanyRegisterForm = () => {
 	const [employees, setEmployees] = useState<BaseCompanyEmployee[]>([]);
 	const { mutate, isPending, isSuccess } = useCompanyRegister();
 	const roles = useRoles();
-	if (!roles?.data) {
-		return;
-	}
-	const roleOptions = roles?.data;
+
+	const roleOptions = roles?.data || [];
 	console.log(errors);
 	const onSubmit = async (data: RegisterCompanySubmit) => {
 		mutate(
@@ -139,7 +137,7 @@ export const CompanyRegisterForm = () => {
 									/>
 								</div>
 							</div>
-							<CompanyRegisterEmployees employees={employees} setEmployees={setEmployees} />
+							<CompanyRegisterEmployees employees={employees} setEmployees={setEmployees} roles={roleOptions} />
 						</div>
 						<div className="px-8">
 							{/** put the errors here */}

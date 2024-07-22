@@ -3,26 +3,23 @@ import { InputBox } from "@/components/input-box";
 import { DropdownBox } from "@/components/dropdown-box";
 import { Button } from "@/components/ui/button";
 import { RegisterEmployee } from "../dtos/authentication";
-import { useRoles } from "../api/use-roles";
 import { DropdownOption } from "@/dtos/base";
 import { isNumber } from "lodash";
+import { RoleResponse } from "../dtos/role";
 
 export const CompanyRegisterEmployees = ({
 	employees = [],
 	setEmployees,
+	roles = [],
 }: {
 	employees: RegisterEmployee[];
 	setEmployees: React.Dispatch<React.SetStateAction<RegisterEmployee[]>>;
+	roles: RoleResponse[];
 }) => {
 	const [email, setEmail] = useState("");
 	const [roleId, setRoleId] = useState<number | null>(null);
 	const isValidEmail = email && email.includes("@");
-	const roles = useRoles();
-	if (!roles?.data) {
-		return;
-	}
-	const roleOptions = roles?.data;
-	const ROLES = roleOptions.map((role) => {
+	const ROLES = roles.map((role) => {
 		return {
 			key: role.id.toString(),
 			label: role.name,
