@@ -3,39 +3,39 @@ import { InputBox } from "@/components/input-box";
 import { DropdownBox } from "@/components/dropdown-box";
 import { Button } from "@/components/ui/button";
 import { RegisterEmployee } from "../dtos/authentication";
+import { useRoles } from "../api/use-roles";
+import { DropdownOption } from "@/dtos/base";
+import { isNumber } from "lodash";
 
 export const CompanyRegisterEmployees = ({
 	employees = [],
 	setEmployees,
 }: {
 	employees: RegisterEmployee[];
-	setEmployees: React.Dispatch<
-		React.SetStateAction<
-			{
-				roleId: number;
-				email: string;
-			}[]
-		>
-	>;
+	setEmployees: React.Dispatch<React.SetStateAction<RegisterEmployee[]>>;
 }) => {
 	const [email, setEmail] = useState("");
-	const [roleId, setRoleId] = useState<number>(1);
+	const [roleId, setRoleId] = useState<number | null>(null);
 	const isValidEmail = email && email.includes("@");
-	const ROLES = [
-		{
-			key: "admin",
-			value: "1",
-			label: "Администратор",
-		},
-		{
-			key: "employee",
-			value: "2",
-			label: "Служител",
-		},
-	];
+	const roles = useRoles();
+	if (!roles?.data) {
+		return;
+	}
+	const roleOptions = roles?.data;
+	const ROLES = roleOptions.map((role) => {
+		return {
+			key: role.id.toString(),
+			label: role.name,
+			value: role.id,
+		};
+	});
 
 	const addEmployee = () => {
-		setEmployees([...employees, { email, roleId }]);
+		if (!roleId) {
+			console.error("Role should be selected");
+			return;
+		}
+		setEmployees([...employees, { email, roleId: roleId }]);
 		setRoleId(1);
 		setEmail("");
 	};
@@ -43,8 +43,11 @@ export const CompanyRegisterEmployees = ({
 		setEmployees(employees.filter((employee: RegisterEmployee) => employee.email !== email));
 	};
 
-	const handleRoleChange = (selectedRole: string) => {
-		setRoleId(Number(selectedRole));
+	const handleRoleChange = (option: DropdownOption) => {
+		if (isNumber(option.value)) {
+			return setRoleId(option.value);
+		}
+		console.error("Role should be a number");
 	};
 
 	return (
@@ -73,7 +76,6 @@ export const CompanyRegisterEmployees = ({
 						iconClass="ud-company"
 						label="Ниво на достъп"
 						type="accessLevel"
-						value={roleId.toString()}
 						options={ROLES}
 						autoComplete="accessLevel"
 						placeholder="Изберете ниво на достъп"
@@ -103,7 +105,7 @@ export const CompanyRegisterEmployees = ({
 								<p>
 									<strong>{employee.email}</strong>
 								</p>
-								<p className="text-gray-500">{ROLES.find((role) => role.value === employee.roleId.toString() || "")?.label}</p>
+								<p className="text-gray-500">{ROLES.find((role) => role.value == employee.roleId || "")?.label}</p>
 							</div>
 						</div>
 						<div>

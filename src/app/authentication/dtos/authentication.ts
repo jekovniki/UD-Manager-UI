@@ -3,6 +3,12 @@ export interface RegisterEmployee {
 	roleId: number;
 }
 
+export interface RegisterCompany {
+	name: string;
+	uic: string;
+	employees: RegisterEmployee[];
+}
+
 export interface LoginCredentials {
 	email: string;
 	password: string;

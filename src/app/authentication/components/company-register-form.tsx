@@ -10,12 +10,18 @@ import { BaseCompanyEmployee } from "@/app/company/dtos/create";
 import { useRoles } from "../api/use-roles";
 import { SuccessCompanyRegistrationTemplate } from "../data/success-company-registration";
 
+interface RegisterCompanySubmit {
+	name: string;
+	uic: string;
+	email: string;
+}
+
 export const CompanyRegisterForm = () => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm();
+	} = useForm<RegisterCompanySubmit>();
 	const [employees, setEmployees] = useState<BaseCompanyEmployee[]>([]);
 	const { mutate, isPending, isSuccess } = useCompanyRegister();
 	const roles = useRoles();
@@ -23,9 +29,8 @@ export const CompanyRegisterForm = () => {
 		return;
 	}
 	const roleOptions = roles?.data;
-	console.log(roleOptions.find((role) => role.name === "Administrator")?.id);
-
-	const onSubmit = async (data: { name: string; uic: string; email: string }) => {
+	console.log(errors);
+	const onSubmit = async (data: RegisterCompanySubmit) => {
 		mutate(
 			{
 				...data,
@@ -137,7 +142,8 @@ export const CompanyRegisterForm = () => {
 							<CompanyRegisterEmployees employees={employees} setEmployees={setEmployees} />
 						</div>
 						<div className="px-8">
-							{errors?.password?.message && <p className="text-red-500 text-xs italic">{errors?.password?.message as string}</p>}
+							{/** put the errors here */}
+							{/* {errors?.password?.message && <p className="text-red-500 text-xs italic">{errors?.password?.message as string}</p>} */}
 						</div>
 						<div className="w-full px-8 pt-4 pb-4 text-right border border-slate-200 border-t-1 border-b-0 border-l-0 border-r-0">
 							<Button type="submit" className="px-14 py-none h-[50px] text-sm" variant="default">
