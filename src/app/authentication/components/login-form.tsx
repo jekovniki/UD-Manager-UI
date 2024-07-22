@@ -18,15 +18,15 @@ export const LoginForm = () => {
 	const { mutate, isPending } = useLogin();
 	const [serverError, setServerError] = useState("");
 	const navigate = useNavigate();
-
 	const onSubmit = (data: LoginCredentials) => {
 		mutate(data, {
 			onSuccess: () => {
-				navigate("/aug/home");
+				navigate("/company/home");
 			},
 			onError: (error: any) => setServerError(getErrorMessage(error.response.data.message)),
 		});
 	};
+
 	return (
 		<LoaderContainer
 			isLoading={isPending}

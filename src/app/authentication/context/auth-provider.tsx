@@ -33,6 +33,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
 	/* eslint-disable react-hooks/exhaustive-deps */
 	useEffect(() => {
+		console.log("isAuthorized : ", isAuthorized);
 		if (isAuthorized) {
 			const interval = setInterval(refreshAccessToken, 14 * 60 * 1000); // 14 minutes
 			return () => clearInterval(interval);
