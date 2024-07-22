@@ -3,4 +3,5 @@ export const AuthenticationQueryKeys = {
 	EmployeeRegister: ["employee-register"],
 	CompanyRegister: ["company-register"],
 	Role: ["role"],
+	Token: ["token"],
 };

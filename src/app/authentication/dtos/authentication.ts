@@ -15,6 +15,9 @@ export interface LoginCredentials {
 }
 
 export interface LoginResponse {
+	firstName: string;
+	lastName: string;
+	email: string;
 	role: RoleData;
 }
 
@@ -28,4 +31,11 @@ export interface Permission {
 	id: number;
 	feature: string;
 	permission: "READ" | "UPDATE" | "CREATE" | "DELETE"; // maybe change it to enum if necessary
+}
+
+export interface AuthenticatedContext {
+	user: LoginResponse | null;
+	isAuthorized: boolean;
+	login: (userData: LoginResponse) => void;
+	logout: () => void;
 }
