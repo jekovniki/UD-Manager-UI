@@ -19,6 +19,7 @@ export const CompanyRegisterEmployees = ({
 	const [email, setEmail] = useState("");
 	const [roleId, setRoleId] = useState<number | null>(null);
 	const isValidEmail = email && email.includes("@");
+	const [dropdownKey, setDropdownKey] = useState(0);
 	const ROLES = roles.map((role) => {
 		return {
 			key: role.id.toString(),
@@ -33,8 +34,9 @@ export const CompanyRegisterEmployees = ({
 			return;
 		}
 		setEmployees([...employees, { email, roleId: roleId }]);
-		setRoleId(1);
+		setRoleId(null);
 		setEmail("");
+		setDropdownKey((prevKey) => prevKey + 1);
 	};
 	const removeEmployee = (email: string) => {
 		setEmployees(employees.filter((employee: RegisterEmployee) => employee.email !== email));
@@ -68,6 +70,7 @@ export const CompanyRegisterEmployees = ({
 				</div>
 				<div className="sm:flex-1 w-full">
 					<DropdownBox
+						key={dropdownKey}
 						wrapperClassName="rounded-l-none sm:border-l-0"
 						id="accessLevel"
 						iconClass="ud-company"

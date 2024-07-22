@@ -27,7 +27,7 @@ export const CompanyRegisterForm = () => {
 	const roles = useRoles();
 
 	const roleOptions = roles?.data || [];
-	console.log(errors);
+	console.error(errors);
 	const onSubmit = async (data: RegisterCompanySubmit) => {
 		mutate(
 			{
