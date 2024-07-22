@@ -4,27 +4,33 @@ import { useForm } from "react-hook-form";
 import { useUserRegister } from "../api/use-user-register";
 import LoaderContainer from "@/containers/loader";
 import { SuccessUserRegistratonTemplate } from "../data/success-user-registration";
+import { FC, useState } from "react";
+import { UserRegistrationForm } from "../dtos/user-register";
 
-export const UserRegisterForm = () => {
+export const UserRegisterForm: FC<{ email: string; refreshToken: string }> = ({ email, refreshToken }) => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 		watch,
-	} = useForm();
+	} = useForm<UserRegistrationForm>();
 	const { mutate, isPending, isSuccess } = useUserRegister();
+	const [serverError, setServerError] = useState("");
 
-	const onSubmit = async (data: unknown) => {
-		try {
-			mutate(data, {
-				onSuccess: (response) => {
-					console.log("response => ", response);
-				},
-				onError: (error) => console.error(error),
-			});
-		} catch (error) {
-			console.error(error);
-		}
+	const onSubmit = async ({ firstName, lastName, position, password }: UserRegistrationForm) => {
+		mutate(
+			{
+				firstName,
+				lastName,
+				position,
+				password,
+				email,
+				refreshToken,
+			},
+			{
+				onError: (error) => setServerError(error.message),
+			},
+		);
 	};
 
 	return (
@@ -40,10 +46,18 @@ export const UserRegisterForm = () => {
 				<>
 					<h2 className="mt-1 px-8 mb-4 text-2xl font-extralight leading-9 tracking-tight text-gray-900">Здравейте!</h2>
 					<p className="px-8 pb-6">Моля попълнете следните полета, за да довършим настройките на вашият акаунт.</p>
+					<p className="px-8 pb-6">
+						<strong>{email}</strong>
+					</p>
 					<form
 						className="w-full py-2 border border-slate-200 border-t-1 border-b-0 border-l-0 border-r-0"
 						onSubmit={handleSubmit(onSubmit)}
 					>
+						{serverError && (
+							<div className="w-full pt-2 px-8">
+								<p className="text-red-500 text-sm italic">{serverError}</p>
+							</div>
+						)}
 						<div className="py-6 px-8">
 							<InputBox
 								id="firstName"
@@ -63,9 +77,13 @@ export const UserRegisterForm = () => {
 								type="text"
 								iconClass="ud-autograph"
 								label="Фамилия"
-								autoComplete="firstName"
+								autoComplete="lastName"
 								placeholder="Вашата фамилия"
+								required
 								wrapperClassName="mb-2"
+								{...register("lastName", {
+									required: true,
+								})}
 							/>
 							<InputBox
 								id="position"
@@ -75,6 +93,7 @@ export const UserRegisterForm = () => {
 								autoComplete="job"
 								placeholder="Позиция в компанията"
 								wrapperClassName="mb-2"
+								{...register("position")}
 							/>
 							<InputBox
 								id="password"

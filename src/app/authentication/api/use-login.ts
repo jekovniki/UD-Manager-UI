@@ -7,7 +7,11 @@ export function useLogin() {
 	const client = useQueryClient();
 
 	return useMutation({
-		mutationFn: (credentials: LoginCredentials) => authApi.post("/sign-in/local", credentials),
+		mutationFn: (credentials: LoginCredentials) =>
+			authApi.post("/sign-in/local", {
+				...credentials,
+				password: btoa(credentials.password),
+			}),
 		onSuccess: () => client.invalidateQueries(AuthenticationQueryKeys.Login as InvalidateQueryFilters),
 	});
 }

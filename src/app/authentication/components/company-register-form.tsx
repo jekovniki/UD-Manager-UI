@@ -17,17 +17,12 @@ interface RegisterCompanySubmit {
 }
 
 export const CompanyRegisterForm = () => {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm<RegisterCompanySubmit>();
+	const { register, handleSubmit } = useForm<RegisterCompanySubmit>();
 	const [employees, setEmployees] = useState<BaseCompanyEmployee[]>([]);
 	const { mutate, isPending, isSuccess } = useCompanyRegister();
 	const roles = useRoles();
 
 	const roleOptions = roles?.data || [];
-	console.error(errors);
 	const onSubmit = async (data: RegisterCompanySubmit) => {
 		mutate(
 			{
@@ -41,7 +36,6 @@ export const CompanyRegisterForm = () => {
 				],
 			},
 			{
-				onSuccess: () => {},
 				onError: () => {},
 			},
 		);
