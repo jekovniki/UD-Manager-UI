@@ -1,5 +1,5 @@
-export interface DropdownOptions {
-    key: string,
-    value: string,
-    label: string
+export interface DropdownOption {
+	key: string;
+	value: string | number;
+	label: string;
 }

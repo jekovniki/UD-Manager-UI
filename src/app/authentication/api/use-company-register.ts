@@ -1,27 +1,13 @@
-import {
-	InvalidateQueryFilters,
-	useMutation,
-	useQueryClient,
-} from "@tanstack/react-query";
+import { InvalidateQueryFilters, useMutation, useQueryClient } from "@tanstack/react-query";
 import { AuthenticationQueryKeys } from "./query-keys";
-
-const mockApi = (data: unknown): Promise<{ data: string }> => {
-	console.log("mockApi data: ", data);
-	return new Promise((resolve) => {
-		setTimeout(() => {
-			resolve({ data: "Hello world!" });
-		}, 5000);
-	});
-};
+import { companyApi } from "@/app/company/api/services";
+import { CreateCompany } from "@/app/company/dtos/create";
 
 export function useCompanyRegister() {
 	const client = useQueryClient();
 
 	return useMutation({
-		mutationFn: mockApi,
-		onSuccess: () =>
-			client.invalidateQueries(
-				AuthenticationQueryKeys.CompanyRegister as InvalidateQueryFilters,
-			),
+		mutationFn: (data: CreateCompany) => companyApi.post("/", data),
+		onSuccess: () => client.invalidateQueries(AuthenticationQueryKeys.CompanyRegister as InvalidateQueryFilters),
 	});
 }
