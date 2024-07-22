@@ -1,8 +1,4 @@
-import {
-	InvalidateQueryFilters,
-	useMutation,
-	useQueryClient,
-} from "@tanstack/react-query";
+import { InvalidateQueryFilters, useMutation, useQueryClient } from "@tanstack/react-query";
 import { AuthenticationQueryKeys } from "./query-keys";
 
 const mockApi = (data: unknown): Promise<{ data: string }> => {
@@ -19,9 +15,6 @@ export function useCompanyRegister() {
 
 	return useMutation({
 		mutationFn: mockApi,
-		onSuccess: () =>
-			client.invalidateQueries(
-				AuthenticationQueryKeys.CompanyRegister as InvalidateQueryFilters,
-			),
+		onSuccess: () => client.invalidateQueries(AuthenticationQueryKeys.CompanyRegister as InvalidateQueryFilters),
 	});
 }
