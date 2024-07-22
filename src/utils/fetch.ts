@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse } from "axios";
+import axios, { AxiosInstance } from "axios";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -12,7 +12,7 @@ class FetchAPI {
 		});
 	}
 
-	public async get(url: string): Promise<AxiosResponse<any, any>> {
+	public async get(url: string) {
 		try {
 			const response = await this.api.get(url);
 			return response.data;
@@ -22,7 +22,7 @@ class FetchAPI {
 		}
 	}
 
-	public async post(endpoint: string, data: any): Promise<AxiosResponse<any, any>> {
+	public async post(endpoint: string, data: any) {
 		try {
 			console.log("baseUrl : ", this.baseURL);
 
@@ -34,7 +34,7 @@ class FetchAPI {
 		}
 	}
 
-	public async put(endpoint: string, data: any): Promise<AxiosResponse<any, any>> {
+	public async put(endpoint: string, data: any) {
 		try {
 			const response = await this.api.put(endpoint, data);
 			return response.data;
@@ -44,7 +44,7 @@ class FetchAPI {
 		}
 	}
 
-	public async patch(endpoint: string, data: any): Promise<AxiosResponse<any, any>> {
+	public async patch(endpoint: string, data: any) {
 		try {
 			const response = await this.api.patch(endpoint, data);
 			return response.data;
@@ -54,7 +54,7 @@ class FetchAPI {
 		}
 	}
 
-	public async delete(endpoint: string): Promise<AxiosResponse<any, any>> {
+	public async delete(endpoint: string) {
 		try {
 			const response = await this.api.delete(endpoint);
 			return response.data;
