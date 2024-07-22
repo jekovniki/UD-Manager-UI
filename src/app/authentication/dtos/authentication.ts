@@ -1,8 +1,6 @@
-export type EmployeeRoles = "admin" | "employee";
-
 export interface RegisterEmployee {
 	email: string;
-	role: EmployeeRoles;
+	roleId: number;
 }
 
 export interface LoginCredentials {
@@ -11,10 +9,10 @@ export interface LoginCredentials {
 }
 
 export interface LoginResponse {
-	role: Role;
+	role: RoleData;
 }
 
-export interface Role {
+export interface RoleData {
 	id: number;
 	name: string;
 	permissions: Permission[];
