@@ -6,7 +6,9 @@ import LoaderContainer from "@/containers/loader";
 import { SuccessUserRegistratonTemplate } from "../data/success-user-registration";
 import { FC, useState } from "react";
 import { UserRegistrationForm } from "../dtos/user-register";
+import { getErrorMessage } from "@/utils/errors";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const UserRegisterForm: FC<{ email: string; refreshToken: string }> = ({ email, refreshToken }) => {
 	const {
 		register,
@@ -28,7 +30,7 @@ export const UserRegisterForm: FC<{ email: string; refreshToken: string }> = ({ 
 				refreshToken,
 			},
 			{
-				onError: (error) => setServerError(error.message),
+				onError: (error: any) => setServerError(getErrorMessage(error.response.data.message)),
 			},
 		);
 	};
@@ -93,7 +95,8 @@ export const UserRegisterForm: FC<{ email: string; refreshToken: string }> = ({ 
 								autoComplete="job"
 								placeholder="Позиция в компанията"
 								wrapperClassName="mb-2"
-								{...register("position")}
+								required
+								{...register("position", { required: true })}
 							/>
 							<InputBox
 								id="password"

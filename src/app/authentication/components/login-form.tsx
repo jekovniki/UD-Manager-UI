@@ -5,7 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { useLogin } from "../api/use-login";
 import LoaderContainer from "@/containers/loader";
 import { LoginCredentials } from "../dtos/authentication";
+import { useState } from "react";
+import { getErrorMessage } from "@/utils/errors";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const LoginForm = () => {
 	const {
 		register,
@@ -13,6 +16,7 @@ export const LoginForm = () => {
 		formState: { errors },
 	} = useForm<LoginCredentials>();
 	const { mutate, isPending } = useLogin();
+	const [serverError, setServerError] = useState("");
 	const navigate = useNavigate();
 
 	const onSubmit = (data: LoginCredentials) => {
@@ -20,10 +24,9 @@ export const LoginForm = () => {
 			onSuccess: () => {
 				navigate("/aug/home");
 			},
-			onError: (error) => console.error(error),
+			onError: (error: any) => setServerError(getErrorMessage(error.response.data.message)),
 		});
 	};
-
 	return (
 		<LoaderContainer
 			isLoading={isPending}
@@ -67,6 +70,7 @@ export const LoginForm = () => {
 						})}
 					/>
 					<div>{errors?.password?.message && <p className="text-red-500 text-xs italic">{errors?.password?.message as string}</p>}</div>
+					<div>{serverError && <p className="text-red-500 text-xs italic">{serverError}</p>}</div>
 					<div>
 						<Button type="submit" className="w-full" variant="default">
 							Вход

@@ -9,6 +9,7 @@ import LoaderContainer from "@/containers/loader";
 import { BaseCompanyEmployee } from "@/app/company/dtos/create";
 import { useRoles } from "../api/use-roles";
 import { SuccessCompanyRegistrationTemplate } from "../data/success-company-registration";
+import { getErrorMessage } from "@/utils/errors";
 
 interface RegisterCompanySubmit {
 	name: string;
@@ -16,9 +17,11 @@ interface RegisterCompanySubmit {
 	email: string;
 }
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const CompanyRegisterForm = () => {
 	const { register, handleSubmit } = useForm<RegisterCompanySubmit>();
 	const [employees, setEmployees] = useState<BaseCompanyEmployee[]>([]);
+	const [serverError, setServerError] = useState("");
 	const { mutate, isPending, isSuccess } = useCompanyRegister();
 	const roles = useRoles();
 
@@ -36,7 +39,7 @@ export const CompanyRegisterForm = () => {
 				],
 			},
 			{
-				onError: () => {},
+				onError: (error: any) => setServerError(getErrorMessage(error.response.data.message)),
 			},
 		);
 	};
@@ -133,10 +136,7 @@ export const CompanyRegisterForm = () => {
 							</div>
 							<CompanyRegisterEmployees employees={employees} setEmployees={setEmployees} roles={roleOptions} />
 						</div>
-						<div className="px-8">
-							{/** put the errors here */}
-							{/* {errors?.password?.message && <p className="text-red-500 text-xs italic">{errors?.password?.message as string}</p>} */}
-						</div>
+						<div className="px-8">{serverError && <p className="text-red-500 text-xs italic">{serverError}</p>}</div>
 						<div className="w-full px-8 pt-4 pb-4 text-right border border-slate-200 border-t-1 border-b-0 border-l-0 border-r-0">
 							<Button type="submit" className="px-14 py-none h-[50px] text-sm" variant="default">
 								Регистрирай
