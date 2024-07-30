@@ -1,4 +1,4 @@
-import { UserRegisterForm } from "@/app/authentication/components/user-register-form";
+import { UserRegisterForm } from "@/features/authentication/components/user-register-form";
 import { Card } from "@/components/ui/card";
 
 const UserRegister = () => {
